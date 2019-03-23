@@ -3,11 +3,8 @@
 const config = require('./includes/config');
 var logger = require('./includes/logger');
 
-// express middleware
-var compression = require('compression');
-var minify = require('express-minify');
-
 var express = require('express'),
+    compression = require('compression'),
     app = express(),
     serv;
 
