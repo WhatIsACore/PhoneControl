@@ -81,6 +81,8 @@ function updateJoystick(e){
     } else {
       joystickPosition.x = joystickPosition.x < -canvas.width/10 ? -2 : -1
     }
+  } else {
+    joystickPosition.x = 0;
   }
   socket.emit('joystick-update', [joystickPosition.x, 0]);
 }
