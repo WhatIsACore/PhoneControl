@@ -44,12 +44,12 @@ Player.prototype.attack = function(){
       var p = players[i];
       if(!(p instanceof Player) || p.id === this.id) continue;
 
-      if(this.facingDirection === 1 && p.x > this.x && p.x < this.x + 50){
+      if(this.facingDirection === 1 && p.x > this.x && p.x < this.x + 100){
         p.xVelocity = 8;
         p.yVelocity = 18;
         p.isInMidair = true;
       }
-      if(this.facingDirection === -1 && p.x < this.x && p.x > this.x - 50){
+      if(this.facingDirection === -1 && p.x < this.x && p.x > this.x - 100){
         p.xVelocity = -8;
         p.yVelocity = 18;
         p.isInMidair = true;
