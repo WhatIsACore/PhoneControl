@@ -1,6 +1,5 @@
 'use strict';
 
-const config = require('./includes/config');
 var logger = require('./includes/logger'),
     sockets = require('./includes/sockets');
 
@@ -21,8 +20,9 @@ routes.get('/', function(req, res, next){
 
 
 // start server
-server.listen(config.port, function(){
-  logger.info('starting server on port ' + config.port);
+var port = process.env.PORT || 5000;
+server.listen(port, function(){
+  logger.info('starting server on port ' + port);
 });
 
 sockets.initIo(server);
