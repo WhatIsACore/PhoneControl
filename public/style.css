@@ -2,3 +2,21 @@ body{
   margin: 0;
   padding: 0;
 }
+
+#buttons{
+  position: fixed;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+}
+#top{
+  margin: 5vh 5vh 5vh 5vh;
+}
+#bottom{
+  margin: 5vh 5vh 5vh 5vh
+}
+#top, #bottom{
+  width: calc(50vw - 10vh);
+  height: 42.5vh;
+  background-color: rgba(255, 255, 255, 0.5);
+}
