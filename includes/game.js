@@ -12,6 +12,7 @@ var Player = function(id, color){
   this.x = 0;
   this.y = 10;
   this.yVelocity = 0;
+  this.xVelocity = 0;
   this.joystick = [0, 0];
   this.attackDelay = 0;
   this.facingDirection = 0;
@@ -35,13 +36,31 @@ Player.prototype.joystickUpdate = function(c){
 module.exports.Player = Player;
 
 Player.prototype.attack = function(){
-  if(this.attackDelay === 0){
+  if(this.attackDelay === 0 && this.facingDirection !== 0){
     this.attackDelay = 30;
+
+    // knock other players back
+    for(var i in players){
+      var p = players[i];
+      if(!(p instanceof Player) || p.id === this.id) continue;
+
+      if(this.facingDirection === 1 && p.x > this.x && p.x < this.x + 50){
+        p.xVelocity = 8;
+        p.yVelocity = 18;
+        p.isInMidair = true;
+      }
+      if(this.facingDirection === -1 && p.x < this.x && p.x > this.x - 50){
+        p.xVelocity = -8;
+        p.yVelocity = 18;
+        p.isInMidair = true;
+      }
+    }
+
   }
 }
 Player.prototype.jump = function(){
   if(!this.isInMidair){
-    this.yVelocity = 20;
+    this.yVelocity = 24;
     this.isInMidair = true;
   }
 }
@@ -70,12 +89,17 @@ function getUpdate(){
 
     if(p.attackDelay > 0) p.attackDelay--;
     if(p.isInMidair && p.yVelocity > -20) p.yVelocity -= 1.2;
-    p.x += p.joystick[0] * 4;
+    if(p.xVelocity === 0){
+      p.x += p.joystick[0] * 3;
+    } else {
+      p.x += p.xVelocity;
+    }
     p.y += p.yVelocity;
     if(p.y < 0){
       p.y = 0;
       p.isInMidair = false;
       p.yVelocity = 0;
+      p.xVelocity = 0;
     }
   }
 

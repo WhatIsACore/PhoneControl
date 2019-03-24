@@ -15,7 +15,7 @@ function initIo(server){
   observers.io = io.of('/observer');
   controllers.io.on('connection', connectController);
   observers.io.on('connection', connectObserver);
-  setInterval(update, 17);
+  setInterval(update, 10);
 }
 module.exports.initIo = initIo;
 
