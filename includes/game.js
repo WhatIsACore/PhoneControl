@@ -37,7 +37,7 @@ module.exports.Player = Player;
 
 Player.prototype.attack = function(){
   if(this.attackDelay === 0 && this.facingDirection !== 0){
-    this.attackDelay = 30;
+    this.attackDelay = 40;
 
     // knock other players back
     for(var i in players){

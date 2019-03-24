@@ -28,7 +28,7 @@ socket.on('update', function(data){
     var p = data.players[i];
 
     drawCircle(p.x + canvas.width/2, -p.y + canvas.height/2, 30, p.color);
-    drawTriangle(p.x + canvas.width/2 + (p.facingDirection * (60 + p.attackDelay)), -p.y + canvas.height/2, p.facingDirection, p.color);
+    drawTriangle(p.x + canvas.width/2 + (p.facingDirection * (60 + Math.max(0, p.attackDelay-10))), -p.y + canvas.height/2, p.facingDirection, p.color);
   }
 
 });
