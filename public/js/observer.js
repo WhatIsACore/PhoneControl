@@ -28,19 +28,25 @@ socket.on('update', function(data){
     var p = data.players[i];
 
     drawCircle(p.x + canvas.width/2, -p.y + canvas.height/2, 30, p.color);
+    drawTriangle(p.x + canvas.width/2 + (p.facingDirection * (60 + p.attackDelay)), -p.y + canvas.height/2, p.facingDirection, p.color);
   }
 
 });
 
-function drawCircle(x, y, radius, fillcolor, strokecolor, strokewidth){
+function drawCircle(x, y, radius, fillcolor){
   ctx.beginPath();
   ctx.arc(x, y, radius, 0, 2 * Math.PI, false);
   ctx.closePath();
   ctx.fillStyle = fillcolor;
   ctx.fill();
-  if(strokecolor != null){
-    ctx.strokeStyle = strokecolor;
-    ctx.lineWidth = strokewidth;
-    ctx.stroke();
-  }
+}
+
+function drawTriangle(x, y, direction, fillcolor){
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(x - 25*direction, y + 25);
+  ctx.lineTo(x - 25*direction, y - 25);
+  ctx.closePath();
+  ctx.fillStyle = fillcolor;
+  ctx.fill();
 }

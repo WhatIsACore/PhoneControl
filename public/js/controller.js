@@ -67,19 +67,20 @@ function updateJoystick(e){
   // prevent joystick from leaving circle
   var distance = Math.sqrt(Math.pow(joystickPosition.x, 2) + Math.pow(joystickPosition.y, 2));
   if(distance > canvas.width/5.5){
-    var f = (canvas.width/5.5) / distance;;
+    var f = (canvas.width/5.5) / distance;
     joystickPosition.x *= f;
     joystickPosition.y *= f;
   }
 
   drawCircle(canvas.width/2 + joystickPosition.x, canvas.height/2 + joystickPosition.y, canvas.width/12, '#ffffff');
 
+
   // after circle is drawn, repurpose joystick position x to send from -2 to 2 to server
   if(joystickPressed && Math.abs(joystickPosition.x) > canvas.width/20){
     if(joystickPosition.x > 0){
-      joystickPosition.x = joystickPosition.x > canvas.width/8 ? 2 : 1;
+      joystickPosition.x = joystickPosition.x > canvas.width/6 ? 2 : 1;
     } else {
-      joystickPosition.x = joystickPosition.x < -canvas.width/8 ? -2 : -1;
+      joystickPosition.x = joystickPosition.x < -canvas.width/6 ? -2 : -1;
     }
   } else {
     joystickPosition.x = 0;
