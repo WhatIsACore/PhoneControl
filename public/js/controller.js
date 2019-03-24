@@ -4,6 +4,10 @@ var socket = io('/controller');
 var clientInfo = {};
 var gameInfo = {};
 
+// fullscreen and landscape
+document.body.requestFullscreen();
+screen.orientation.lock('landscape');
+
 var canvas = document.getElementById('joystick'),
     ctx = canvas.getContext('2d');
 
