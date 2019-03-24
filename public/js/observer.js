@@ -22,5 +22,5 @@ window.addEventListener('resize', resizeEventHandler);
 
 socket.on('update', function(time){
   ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
-  ctx.fillText('delay: ' + (Date.now() - time), 20, 20);
+  
 });
