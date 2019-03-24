@@ -77,9 +77,9 @@ function updateJoystick(e){
   // after circle is drawn, repurpose joystick position x to send from -2 to 2 to server
   if(joystickPressed && Math.abs(joystickPosition.x) > canvas.width/20){
     if(joystickPosition.x > 0){
-      joystickPosition.x = joystickPosition.x > canvas.width/10 ? 2 : 1
+      joystickPosition.x = joystickPosition.x > canvas.width/8 ? 2 : 1;
     } else {
-      joystickPosition.x = joystickPosition.x < -canvas.width/10 ? -2 : -1
+      joystickPosition.x = joystickPosition.x < -canvas.width/8 ? -2 : -1;
     }
   } else {
     joystickPosition.x = 0;
