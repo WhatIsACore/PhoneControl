@@ -68,13 +68,15 @@ function connectController(socket){
     socket.disconnect();
   });
 
-  // manage key events
+  // manage input events
   socket.on('button-down', function(btn){
     socket.controller.player.buttonDown(btn);
   });
-
   socket.on('button-up', function(btn){
     socket.controller.player.buttonUp(btn);
+  });
+  socket.on('joystick-update', function(c){
+    socket.controller.player.joystickUpdate(c);
   });
 
 }

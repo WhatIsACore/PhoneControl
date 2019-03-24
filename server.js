@@ -19,6 +19,7 @@ routes.get('/', function(req, res, next){
       })
       .use('/', express.static(__dirname + '/public'));
 
+
 // start server
 server.listen(config.port, function(){
   logger.info('starting server on port ' + config.port);

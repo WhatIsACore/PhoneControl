@@ -20,7 +20,27 @@ function resizeEventHandler(){
 resizeEventHandler();
 window.addEventListener('resize', resizeEventHandler);
 
-socket.on('update', function(time){
+// update loop
+socket.on('update', function(data){
   ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
-  
+
+  for(var i in data.players){
+    var p = data.players[i];
+
+    drawCircle(p.x + canvas.width/2, -p.y + canvas.height/2, 30, p.color);
+  }
+
 });
+
+function drawCircle(x, y, radius, fillcolor, strokecolor, strokewidth){
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, 2 * Math.PI, false);
+  ctx.closePath();
+  ctx.fillStyle = fillcolor;
+  ctx.fill();
+  if(strokecolor != null){
+    ctx.strokeStyle = strokecolor;
+    ctx.lineWidth = strokewidth;
+    ctx.stroke();
+  }
+}

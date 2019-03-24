@@ -14,7 +14,20 @@ body{
   outline: none;
 }
 
-
+#joystick{
+  position: fixed;
+  left: 0;
+  width: 50vw;
+  height: 100vh;
+  text-align: center;
+}
+#joystick-circle{
+  width: 40vw;
+  height: 40vw;
+  margin: calc(50vh - 20vw) 5vw calc(50vh - 20vw) 5vw;
+  border-radius: 20vw;
+  background-color: rgba(255, 255, 255, 0.5);
+}
 #buttons{
   position: fixed;
   right: 0;
