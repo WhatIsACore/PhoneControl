@@ -45,13 +45,13 @@ Player.prototype.attack = function(){
       if(!(p instanceof Player) || p.id === this.id) continue;
 
       if(this.facingDirection === 1 && p.x > this.x && p.x < this.x + 100){
-        p.xVelocity = 8;
-        p.yVelocity = 18;
+        p.xVelocity = 6;
+        p.yVelocity = 15;
         p.isInMidair = true;
       }
       if(this.facingDirection === -1 && p.x < this.x && p.x > this.x - 100){
-        p.xVelocity = -8;
-        p.yVelocity = 18;
+        p.xVelocity = -6;
+        p.yVelocity = 15;
         p.isInMidair = true;
       }
     }
@@ -60,7 +60,7 @@ Player.prototype.attack = function(){
 }
 Player.prototype.jump = function(){
   if(!this.isInMidair){
-    this.yVelocity = 24;
+    this.yVelocity = 18;
     this.isInMidair = true;
   }
 }
@@ -88,9 +88,9 @@ function getUpdate(){
     if(!(p instanceof Player)) continue;
 
     if(p.attackDelay > 0) p.attackDelay--;
-    if(p.isInMidair && p.yVelocity > -20) p.yVelocity -= 1.2;
+    if(p.isInMidair && p.yVelocity > -20) p.yVelocity -= 0.9;
     if(p.xVelocity === 0){
-      p.x += p.joystick[0] * 3;
+      p.x += p.joystick[0] * 2.5;
     } else {
       p.x += p.xVelocity;
     }
