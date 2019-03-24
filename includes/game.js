@@ -10,7 +10,7 @@ var Player = function(id, color){
   this.id = id;
   this.color = color;
   this.x = 0;
-  this.y = 10;
+  this.y = 50;
   this.yVelocity = 0;
   this.xVelocity = 0;
   this.joystick = [0, 0];
@@ -42,7 +42,7 @@ Player.prototype.attack = function(){
     // knock other players back
     for(var i in players){
       var p = players[i];
-      if(!(p instanceof Player) || p.id === this.id || Math.abs(p.y - this.y) > 50) continue;
+      if(!(p instanceof Player) || p.id === this.id || Math.abs(p.y - this.y) > 30) continue;
 
       if(this.facingDirection === 1 && p.x > this.x && p.x < this.x + 100){
         p.xVelocity = 6;
@@ -87,6 +87,7 @@ function getUpdate(){
     var p = players[i];
     if(!(p instanceof Player)) continue;
 
+    if(p.y > 0) p.isInMidair = true;
     if(p.attackDelay > 0) p.attackDelay--;
     if(p.isInMidair && p.yVelocity > -20) p.yVelocity -= 0.9;
     if(p.xVelocity === 0){
@@ -95,11 +96,18 @@ function getUpdate(){
       p.x += p.xVelocity;
     }
     p.y += p.yVelocity;
-    if(p.y < 0){
+    if(p.y < 0 || p.isInMidair && p.y === 0){
       p.y = 0;
       p.isInMidair = false;
       p.yVelocity = 0;
       p.xVelocity = 0;
+    }
+
+    // respawn if moved off screen
+    if(Math.abs(p.x) > 750){
+      p.x = 0;
+      p.y = 50;
+      p.isInMidair = true;
     }
   }
 

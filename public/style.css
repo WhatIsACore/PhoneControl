@@ -54,3 +54,17 @@ body{
   height: 39vh;
   background-color: rgba(255, 255, 255, 0.5);
 }
+
+#screen-warning{
+  display: none;
+  position: fixed;
+  z-index: 10;
+  background-color: #ff4444;
+  color: #fff;
+  width: 100vw;
+  height: 60vh;
+  padding: 20vh 0;
+  font-size: 14vh;
+  text-align: center;
+  font-family: sans-serif;
+}

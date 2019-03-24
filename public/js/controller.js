@@ -11,6 +11,13 @@ var canvas = document.getElementById('joystick'),
 function resizeEventHandler(){
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
+  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  if(h > w){
+    document.getElementById('screen-warning').style.display = 'block';
+  } else {
+    document.getElementById('screen-warning').style.display = 'none';
+  }
 }
 resizeEventHandler();
 window.addEventListener('resize', resizeEventHandler);
