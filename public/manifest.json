@@ -1,0 +1,7 @@
+{
+  "short_name": "PhoneParty",
+  "name": "PhoneParty (LA Hacks 2019)",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "landscape"
+}
