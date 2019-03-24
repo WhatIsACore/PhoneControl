@@ -36,15 +36,19 @@ var joystickPressed = false;
 
 topBtn.addEventListener('touchstart', function(){
   socket.emit('button-down', 0);
+  topBtn.className = 'pressed';
 });
 topBtn.addEventListener('touchend', function(){
   socket.emit('button-up', 0);
+  topBtn.className = '';
 });
 bottomBtn.addEventListener('touchstart', function(){
   socket.emit('button-down', 1);
+  bottomBtn.className = 'pressed';
 });
 bottomBtn.addEventListener('touchend', function(){
   socket.emit('button-up', 1);
+  bottomBtn.className = '';
 });
 joystick.addEventListener('touchstart', function(e){
   joystickPressed = true;
