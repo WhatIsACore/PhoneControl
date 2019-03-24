@@ -27,8 +27,13 @@ body{
 #buttons{
   position: fixed;
   right: 0;
-  width: 50vw;
+  width: 40vw;
   height: 100vh;
+  text-align: right;
+  font-size: 30vh;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #fff;
 }
 #top{
   margin: 5vh 5vh 5vh 5vh;
@@ -37,7 +42,9 @@ body{
   margin: 5vh 5vh 5vh 5vh
 }
 #top, #bottom{
-  width: calc(50vw - 10vh);
-  height: 42.5vh;
+  width: calc(35vw - 10vh);
+  padding-right: 5vw;
+  padding-top: 3.5vh;
+  height: 39vh;
   background-color: rgba(255, 255, 255, 0.5);
 }

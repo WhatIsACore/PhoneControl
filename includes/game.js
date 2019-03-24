@@ -42,7 +42,7 @@ Player.prototype.attack = function(){
     // knock other players back
     for(var i in players){
       var p = players[i];
-      if(!(p instanceof Player) || p.id === this.id) continue;
+      if(!(p instanceof Player) || p.id === this.id || Math.abs(p.y - this.y) > 50) continue;
 
       if(this.facingDirection === 1 && p.x > this.x && p.x < this.x + 100){
         p.xVelocity = 6;
